@@ -2,6 +2,9 @@ package ginJson
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/lucky-lee/gutil/gLog"
+	"net/http"
+	"time"
 )
 
 const (
@@ -18,8 +21,9 @@ func SetSuccessCode(code int) {
 
 //base bean
 type JsonBaseBean struct {
-	Code int    `json:"code"`
-	Msg  string `json:"msg"`
+	Code      int    `json:"code"`
+	Msg       string `json:"msg"`
+	Timestamp int64  `json:"timestamp"`
 }
 
 //json return bean
@@ -31,7 +35,8 @@ type JsonRetBean struct {
 //output json string
 func Render(c *gin.Context, code int, msg string, obj interface{}) {
 	bean := RetBean(code, msg, obj)
-	c.JSON(successCode, bean)
+	gLog.Json("jsonBean", bean)
+	c.JSON(http.StatusOK, bean)
 }
 
 //output json string with message
@@ -69,11 +74,12 @@ func RetBean(code int, msg string, obj interface{}) JsonRetBean {
 
 	bean.Code = code
 	bean.Msg = msg
+	bean.Timestamp = time.Now().UnixNano() / 1e6
 
 	if obj != nil {
 		bean.Data = obj
 	} else {
-		bean.Data = ""
+		bean.Data = BeanEmpty{}
 	}
 
 	return bean

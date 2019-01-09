@@ -2,9 +2,33 @@ package ginReq
 
 import (
 	"github.com/gin-gonic/gin"
-	"net/http"
 	"github.com/lucky-lee/gutil/gStr"
+	"net/http"
 )
+
+//param uint8 value
+func ParamUint8(c *gin.Context, key string) uint8 {
+	val := c.PostForm(key)
+	toVal := gStr.ToUint8(val)
+
+	if toVal == 0 {
+		c.AbortWithStatusJSON(http.StatusForbidden, "param err")
+	}
+
+	return toVal
+}
+
+//param uint8 value and have default value
+func ParamUint8Def(c *gin.Context, key string, defVal uint8) uint8 {
+	val := c.PostForm(key)
+	toVal := gStr.ToUint8(val)
+
+	if toVal == 0 {
+		toVal = defVal
+	}
+
+	return toVal
+}
 
 //param int value
 func ParamInt(c *gin.Context, key string) int {
