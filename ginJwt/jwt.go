@@ -39,7 +39,7 @@ func Uid(c *gin.Context) int64 {
 	token := ginReq.HeaderAuth(c)
 
 	if token == "" {
-		c.AbortWithStatusJSON(http.StatusForbidden, "error")
+		c.AbortWithStatusJSON(http.StatusOK, ginJson.RetBean(GetExpireCode(), "未传入用户签名", nil))
 		return 0
 	}
 
