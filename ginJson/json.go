@@ -12,7 +12,7 @@ const (
 	MESS_FAIL    = "fail"
 )
 
-var successCode int
+var successCode int = 200
 
 //set success code
 func SetSuccessCode(code int) {
