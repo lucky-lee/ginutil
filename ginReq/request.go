@@ -9,7 +9,10 @@ import (
 func HeaderAuth(c *gin.Context) string {
 	auth := c.Request.Header.Get("Authorization")
 	if auth == "" {
-		c.AbortWithStatusJSON(http.StatusForbidden, "err")
+		if !c.IsAborted() {
+			c.AbortWithStatusJSON(http.StatusForbidden, "err")
+		}
+
 		return ""
 	}
 	return auth

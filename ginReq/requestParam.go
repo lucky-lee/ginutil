@@ -6,6 +6,7 @@ import (
 	"github.com/lucky-lee/ginutil/ginJson"
 	"github.com/lucky-lee/gutil/gStr"
 	"net/http"
+	"time"
 )
 
 //param uint8 value
@@ -14,8 +15,7 @@ func ParamUint8(c *gin.Context, key string) uint8 {
 	toVal := gStr.ToUint8(val)
 
 	if toVal == 0 {
-		c.AbortWithStatusJSON(http.StatusOK, ginJson.RetBean(403, "param err", nil))
-		fmt.Println("param:", key, "no exist")
+		renderAbort(c, key)
 	}
 
 	return toVal
@@ -39,8 +39,7 @@ func ParamInt(c *gin.Context, key string) int {
 	toVal := gStr.ToInt(val)
 
 	if toVal == 0 {
-		c.AbortWithStatusJSON(http.StatusOK, ginJson.RetBean(403, "param err", nil))
-		fmt.Println("param:", key, "no exist")
+		renderAbort(c, key)
 	}
 	return toVal
 }
@@ -63,8 +62,7 @@ func ParamInt64(c *gin.Context, key string) int64 {
 	toVal := gStr.ToInt64(val)
 
 	if toVal == 0 {
-		c.AbortWithStatusJSON(http.StatusOK, ginJson.RetBean(403, "param err", nil))
-		fmt.Println("param:", key, "no exist")
+		renderAbort(c, key)
 	}
 	return toVal
 }
@@ -86,8 +84,7 @@ func ParamFloat64(c *gin.Context, key string) float64 {
 	val := c.PostForm(key)
 
 	if val == "" {
-		c.AbortWithStatusJSON(http.StatusOK, ginJson.RetBean(403, "param err", nil))
-		fmt.Println("param:", key, "no exist")
+		renderAbort(c, key)
 		return 0
 	}
 
@@ -101,9 +98,7 @@ func ParamStr(c *gin.Context, key string) string {
 	val := c.PostForm(key)
 
 	if val == "" {
-		//c.AbortWithStatusJSON(http.StatusForbidden, "param err")
-		c.AbortWithStatusJSON(http.StatusOK, ginJson.RetBean(403, "param err", nil))
-		fmt.Println("param:", key, "no exist")
+		renderAbort(c, key)
 	}
 
 	return val
@@ -118,4 +113,12 @@ func ParamStrDef(c *gin.Context, key string, defVal string) string {
 	}
 
 	return val
+}
+
+//输出 abort信息
+func renderAbort(c *gin.Context, key string) {
+	if !c.IsAborted() {
+		c.AbortWithStatusJSON(http.StatusOK, ginJson.RetBean(403, "param err", nil))
+	}
+	fmt.Println("time:", time.Now().Format("2006-01-02 15:04:05"), " param:", key, "no exist")
 }
