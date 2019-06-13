@@ -10,6 +10,7 @@ import (
 )
 
 //param uint8 value
+//Deprecated:use ginReq/post.PostUint8 instead
 func ParamUint8(c *gin.Context, key string) uint8 {
 	val := c.PostForm(key)
 	toVal := gStr.ToUint8(val)
@@ -22,6 +23,7 @@ func ParamUint8(c *gin.Context, key string) uint8 {
 }
 
 //param uint8 value and have default value
+//Deprecated:use ginReq/post.PostUint8Def instead
 func ParamUint8Def(c *gin.Context, key string, defVal uint8) uint8 {
 	val := c.PostForm(key)
 	toVal := gStr.ToUint8(val)
@@ -34,6 +36,7 @@ func ParamUint8Def(c *gin.Context, key string, defVal uint8) uint8 {
 }
 
 //param int value
+//Deprecated:use ginReq/post.PostInt instead
 func ParamInt(c *gin.Context, key string) int {
 	val := c.PostForm(key)
 	toVal := gStr.ToInt(val)
@@ -45,6 +48,7 @@ func ParamInt(c *gin.Context, key string) int {
 }
 
 //param int value and have default value
+//Deprecated:use ginReq/post.PostIntDef instead
 func ParamIntDef(c *gin.Context, key string, defVal int) int {
 	val := c.PostForm(key)
 	toVal := gStr.ToInt(val)
@@ -57,6 +61,7 @@ func ParamIntDef(c *gin.Context, key string, defVal int) int {
 }
 
 //param int64 value
+//Deprecated:use ginReq/post.PostInt64 instead
 func ParamInt64(c *gin.Context, key string) int64 {
 	val := c.PostForm(key)
 	toVal := gStr.ToInt64(val)
@@ -68,6 +73,7 @@ func ParamInt64(c *gin.Context, key string) int64 {
 }
 
 //param int64 value and have default value
+//Deprecated:use ginReq/post.PostInt64Def instead
 func ParamInt64Def(c *gin.Context, key string, defVal int64) int64 {
 	val := c.PostForm(key)
 	toVal := gStr.ToInt64(val)
@@ -80,6 +86,7 @@ func ParamInt64Def(c *gin.Context, key string, defVal int64) int64 {
 }
 
 //param float value
+//Deprecated:use ginReq/post.PostFloat64 instead
 func ParamFloat64(c *gin.Context, key string) float64 {
 	val := c.PostForm(key)
 
@@ -94,6 +101,7 @@ func ParamFloat64(c *gin.Context, key string) float64 {
 }
 
 //param string value
+//Deprecated:use ginReq/post.PostStr instead
 func ParamStr(c *gin.Context, key string) string {
 	val := c.PostForm(key)
 
@@ -105,6 +113,7 @@ func ParamStr(c *gin.Context, key string) string {
 }
 
 //param string value and have default value
+//Deprecated:use ginReq/post.PostStrDef instead
 func ParamStrDef(c *gin.Context, key string, defVal string) string {
 	val := c.PostForm(key)
 
