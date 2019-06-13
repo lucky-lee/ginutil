@@ -1,10 +1,10 @@
 package ginJwt
 
 import (
+	"ginutil/ginJson"
+	"ginutil/ginReq"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	"github.com/lucky-lee/ginutil/ginJson"
-	"github.com/lucky-lee/ginutil/ginReq"
 	"github.com/lucky-lee/gutil/gLog"
 	"github.com/lucky-lee/gutil/gStr"
 	"net/http"
