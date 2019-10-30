@@ -1,0 +1,15 @@
+hash: 82784faed84d14fcdc2d6202654397f7695d56190e8658aaadae01c10545dbe4
+updated: 2019-10-30T15:23:35.984073+08:00
+imports:
+- name: github.com/dgrijalva/jwt-go
+  version: 06ea1031745cb8b3dab3f6a236daf2b0aa468b7e
+- name: github.com/lucky-lee/gutil
+  version: e1969e42a05a2395a43d91850e95cea25860f4a7
+  subpackages:
+  - gFile
+  - gFmt
+  - gLog
+  - gPath
+  - gStr
+  - gTime
+testImports: []
