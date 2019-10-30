@@ -1,2 +1,0 @@
-# gutil
-golang util
