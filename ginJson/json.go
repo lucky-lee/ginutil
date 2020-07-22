@@ -2,7 +2,6 @@ package ginJson
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/lucky-lee/gutil/gLog"
 	"net/http"
 	"time"
 )
@@ -35,7 +34,6 @@ type JsonRetBean struct {
 //output json string
 func Render(c *gin.Context, code int, msg string, obj interface{}) {
 	bean := RetBean(code, msg, obj)
-	gLog.Json("jsonBean", bean)
 	c.JSON(http.StatusOK, bean)
 }
 
